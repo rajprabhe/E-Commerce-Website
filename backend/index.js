@@ -16,9 +16,6 @@ app.use(cors(
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
 
-app.get('/', (req,res) => {
-    res.send("E-commere website working")
-})
 
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/products', require('./routes/productRoutes'))
@@ -39,7 +36,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const PORT = 5000;
+const PORT = process.env.PORT || 6000;
 app.listen(PORT, () => {
     console.log(`server is running on port  ${PORT}`);
 });
