@@ -7,8 +7,9 @@ const AdminOrders = () => {
 
     useEffect(() => {
         const fetchOrders = async () => {
+            if (!user) return;
             const res = await fetch('/api/orders', {
-                headers: { Authorization: `Bearer ${user.token}` }
+                headers: { Authorization: `Bearer ${user?.token}` }
             })
 
             const data = await res.json()
